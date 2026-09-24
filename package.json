@@ -1,0 +1,11 @@
+{
+  "name": "netflix-clone-mini",
+  "version": "1.0.0",
+  "description": "Small static Netflix-like clone for demo and learning",
+  "scripts": {
+    "start": "npx live-server --port=8080 --open=./index.html"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone - Mini Project</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">Netflix Clone</div>
+        <div class="header-actions">
+            <input id="search" placeholder="Search movies..." aria-label="Search movies">
+            <button id="auth-btn" class="btn">Sign In</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 id="hero-title"></h1>
+                <p id="hero-overview"></p>
+                <div class="hero-buttons">
+                    <button id="play-btn" class="btn primary">Play</button>
+                    <button id="more-btn" class="btn">More Info</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="rows" class="rows"></section>
+    </main>
+
+    <!-- Modal for movie details / trailer -->
+    <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-inner">
+            <button id="close-modal" class="modal-close" aria-label="Close">×</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script>
+        (function(){
+            // Protect this page — redirect to login if not authenticated
+            try{
+                var auth = localStorage.getItem('auth');
+                if(!auth){
+                    location.replace('login.html');
+                    return;
+                }
+                var btn = document.getElementById('auth-btn');
+                if(btn){
+                    btn.textContent = 'Logout';
+                    btn.addEventListener('click', function(){
+                        localStorage.removeItem('auth');
+                        localStorage.removeItem('username');
+                        location.href = 'login.html';
+                    });
+                }
+            }catch(e){
+                // If localStorage is not available, redirect to login as a fallback
+                try{ location.replace('login.html'); }catch(err){}
+            }
+        })();
+    </script>
+    <script src="js/app.js" defer></script>
+</body>
+</html>

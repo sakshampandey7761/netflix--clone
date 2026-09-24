@@ -1,0 +1,41 @@
+/* Simple Netflix-like styles for the mini project */
+:root{
+  --bg:#141414;
+  --muted:#b3b3b3;
+  --accent:#e50914;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:#fff;background:var(--bg)}
+.main-header{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:40;background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0));}
+.logo{font-weight:700;color:var(--accent);font-size:20px}
+.header-actions{display:flex;align-items:center;gap:12px}
+.header-actions input{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:4px;color:#fff;min-width:200px}
+.btn{background:rgba(255,255,255,0.09);border:none;padding:8px 12px;border-radius:4px;color:#fff;cursor:pointer}
+.btn.primary{background:var(--accent);font-weight:700}
+main{padding-top:84px}
+.hero{position:relative;height:62vh;min-height:420px;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:40px 6%;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 10%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.95) 100%);}
+.hero-content{position:relative;max-width:60%;z-index:2}
+.hero-content h1{font-size:clamp(28px,5vw,48px);margin:0 0 12px}
+.hero-content p{color:var(--muted);max-height:120px;overflow:hidden;text-overflow:ellipsis}
+.hero-buttons{margin-top:16px;display:flex;gap:8px}
+.rows{padding:24px 6% 80px;display:flex;flex-direction:column;gap:26px}
+.row{display:flex;flex-direction:column;gap:12px}
+.row-title{font-size:18px;margin:0 0 6px}
+.row-cards{display:flex;gap:12px;overflow:auto;padding-bottom:6px}
+.card{min-width:160px;width:160px;height:240px;border-radius:6px;flex:0 0 auto;background-size:cover;background-position:center;position:relative;cursor:pointer}
+.card .card-title{position:absolute;left:8px;right:8px;bottom:6px;font-size:13px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.6));padding:6px;border-radius:4px}
+.card:hover{transform:translateY(-6px);transition:transform .18s}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;visibility:hidden;opacity:0;transition:opacity .18s}
+.modal[aria-hidden="false"]{visibility:visible;opacity:1}
+.modal-inner{background:#0b0b0b;padding:18px;border-radius:8px;max-width:900px;width:100%;max-height:90vh;overflow:auto;position:relative}
+.modal-close{position:absolute;top:10px;right:12px;background:transparent;border:none;color:#fff;font-size:28px;cursor:pointer}
+.modal iframe{width:100%;height:480px;border-radius:6px;border:none}
+@media (max-width:768px){
+  .hero-content{max-width:90%}
+  .card{min-width:120px;width:120px;height:180px}
+  .modal iframe{height:240px}
+}
+/* subtle scrollbar styles */
+.row-cards::-webkit-scrollbar{height:10px}
+.row-cards::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:6px}
